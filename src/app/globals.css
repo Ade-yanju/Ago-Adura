@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #F5C518;
+  --deep-gold: #D4A017;
+  --navy: #071A47;
+  --deep-navy: #020D2A;
+  --sky: #1B4FBF;
+  --light-blue: #3B72E8;
+  --white: #FDFAF2;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-outfit), 'Outfit', sans-serif;
+  background: #FDFAF2;
+  color: #0D1B3A;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Leaflet map */
+.leaflet-container {
+  border-radius: 1rem;
+  z-index: 1;
+}
+.leaflet-popup-content-wrapper {
+  border-radius: 12px !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2) !important;
+  border: 1px solid rgba(245,197,24,0.2) !important;
+}
+.leaflet-popup-tip { background: white !important; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #D4A017; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #F5C518; }
+
+/* Selection */
+::selection { background: rgba(245,197,24,0.3); color: #071A47; }
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  .glass {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .glass-dark {
+    background: rgba(7,26,71,0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(245,197,24,0.15);
+  }
+
+  .gold-text {
+    background: linear-gradient(135deg, #F5C518, #D4A017);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shimmer-gold {
+    background: linear-gradient(90deg, #F5C518 0%, #fff7a8 50%, #F5C518 100%);
+    background-size: 200% auto;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .section-pad { @apply py-24 px-4 md:px-8 lg:px-16; }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
