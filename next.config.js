@@ -2,19 +2,18 @@
 
 // Set REPO_NAME to your GitHub repository name (e.g. "cac-ago-adura")
 // This is needed for GitHub Pages which serves from /repo-name/
-// Leave empty if using Vercel or a custom domain (no basePath needed)
-const isProd = process.env.NODE_ENV === "production";
-const repoName = process.env.REPO_NAME || "cac-ago-adura";
+// Leave empty when deploying to Vercel or a custom domain (no basePath needed)
+const repoName = process.env.REPO_NAME || "";
+const isGitHubPages = Boolean(repoName);
 
 const nextConfig = {
-  output: "export",
   trailingSlash: true,
   images: {
     unoptimized: true,
   },
-  // Apply basePath only for GitHub Pages production builds
-  ...(isProd && repoName
+  ...(isGitHubPages
     ? {
+        output: "export",
         basePath: `/${repoName}`,
         assetPrefix: `/${repoName}/`,
       }
